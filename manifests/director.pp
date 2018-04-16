@@ -27,7 +27,7 @@ class bareos::director(
     service { $service_name:
       ensure  => $service_ensure,
       enable  => $service_enable,
-      restart => 'echo reload | bconsole',
+      restart => 'echo reload | /usr/bin/bconsole',
     }
   }
 

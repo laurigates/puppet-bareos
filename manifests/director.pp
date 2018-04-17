@@ -25,9 +25,10 @@ class bareos::director(
 
   if $manage_service {
     service { $service_name:
-      ensure  => $service_ensure,
-      enable  => $service_enable,
-      restart => 'echo reload | /usr/bin/bconsole',
+      ensure   => $service_ensure,
+      enable   => $service_enable,
+      restart  => 'echo reload | /usr/bin/bconsole',
+      provider => 'debian',
     }
   }
 

@@ -5,14 +5,15 @@
 # This class will be automatically included when a resource is defined.
 # It is not intended to be used directly by external resources like node definitions or other modules.
 class bareos::storage(
-  $manage_service = $::bareos::manage_service,
-  $manage_package = $::bareos::manage_package,
-  $package_name   = $::bareos::storage_package_name,
-  $package_ensure = $::bareos::package_ensure,
-  $service_name   = $::bareos::storage_service_name,
-  $service_ensure = $::bareos::service_ensure,
-  $service_enable = $::bareos::service_enable,
-  $config_dir     = "${::bareos::config_dir}/bareos-sd.d"
+  $manage_service   = $::bareos::manage_service,
+  $manage_package   = $::bareos::manage_package,
+  $package_name     = $::bareos::storage_package_name,
+  $package_ensure   = $::bareos::package_ensure,
+  $service_name     = $::bareos::storage_service_name,
+  $service_ensure   = $::bareos::service_ensure,
+  $service_enable   = $::bareos::service_enable,
+  $service_provider = $::bareos::service_provider,
+  $config_dir       = "${::bareos::config_dir}/bareos-sd.d"
 ) inherits ::bareos {
   include ::bareos::storage::storage
 
@@ -25,8 +26,9 @@ class bareos::storage(
 
   if $manage_service {
     service { $service_name:
-      ensure => $service_ensure,
-      enable => $service_enable,
+      ensure   => $service_ensure,
+      enable   => $service_enable,
+      provider => $service_provider,
     }
   }
 

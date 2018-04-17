@@ -21,6 +21,7 @@ class bareos (
   $package_ensure   = $::bareos::params::package_ensure,
   $service_ensure   = $::bareos::params::service_ensure,
   $service_enable   = $::bareos::params::service_enable,
+  $service_provider = $::bareos::params::service_provider,
 
   $console_package_name  = $::bareos::params::console_package_name,
   $monitor_package_name  = $::bareos::params::monitor_package_name,

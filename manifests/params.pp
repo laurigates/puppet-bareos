@@ -23,6 +23,15 @@ class bareos::params {
   $service_ensure = running
   $service_enable = true
 
+  case $::operatingsystem {
+    'Debian': {
+      $service_provider = 'debian'
+    }
+    default: {
+      $service_provider = Undef
+    }
+  }
+
   # service/package specific
   # bconsole
   $console_package_name = 'bareos-bconsole'
